@@ -1,0 +1,24 @@
+<resources>
+    <string name="menu_px">PX</string>
+    <string name="menu_dp">DP</string>
+    <string name="menu_reset">Reset</string>
+    <string name="menu_test">Test</string>
+    <string name="status_label">Status:</string>
+    <string name="class_name_placeholder">Class name</string>
+    <string name="size_placeholder">x: 0 y: 0 width: 0 height: 0</string>
+    <string name="layout_params_label">Layout Params</string>
+    <string name="attributes_label">Attributes</string>
+    <string name="header_value">Value</string>
+    <string name="header_name">Name</string>
+    <string name="title">UI Inspector</string>
+    <string name="menu_load">Load</string>
+    <string name="menu_save">Save</string>
+    <string name="dialog_save">Save</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_title">Enter file name</string>
+    <string name="dialog_share">Share</string>
+    <string name="menu_reset_full">Reste connection</string>
+    <string name="show_null_zero">Show null/zero</string>
+    <string name="settings">Settings</string>
+
+</resources>

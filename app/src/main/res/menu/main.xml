@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_save"
+        android:title="@string/menu_save"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_load"
+        android:title="@string/menu_load"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_reset"
+        android:title="@string/menu_reset_full"
+        android:titleCondensed="@string/menu_reset"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/show_empty"
+        android:title="@string/settings"
+        app:showAsAction="ifRoom" />
+</menu>

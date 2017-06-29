@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.views.main.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/left_panel"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/tree_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#666" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:text="@string/status_label"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="8"
+                android:minLines="2"
+                android:paddingBottom="8dp"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/left_panel_border"
+        android:layout_toEndOf="@+id/left_panel"
+        android:layout_width="1px"
+        android:layout_height="match_parent"
+        android:background="#666" />
+
+    <LinearLayout
+        android:id="@+id/ui"
+        android:layout_toEndOf="@+id/left_panel_border"
+        android:layout_toStartOf="@+id/right_panel_border"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+            <com.raybritton.uiinspectorserver.ui.views.ScalpelLayout
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.raybritton.uiinspectorserver.ui.views.VerticalSeekBar
+                android:id="@+id/seekbar"
+                android:padding="16dp"
+                android:layout_gravity="end"
+                android:layout_width="32dp"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#666" />
+            <TextView
+                android:id="@+id/layers_label"
+                android:paddingTop="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="Layers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:id="@+id/layer_checks"
+                android:layout_toEndOf="@+id/layers_label"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </RelativeLayout>
+
+
+        <include layout="@layout/element_ui_settings" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_toStartOf="@+id/right_panel"
+        android:id="@+id/right_panel_border"
+        android:layout_width="1px"
+        android:layout_height="match_parent"
+        android:background="#666" />
+
+    <LinearLayout
+        android:id="@+id/right_panel"
+        android:layout_alignParentEnd="true"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/class_name"
+            style="@style/Label"
+            android:text="@string/class_name_placeholder" />
+
+        <TextView
+            android:id="@+id/size"
+            style="@style/Label"
+            android:text="@string/size_placeholder" />
+
+        <TextView
+            style="@style/Label"
+            android:text="@string/layout_params_label" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp">
+
+            <TableLayout
+                android:id="@+id/params_table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shrinkColumns="1" />
+        </ScrollView>
+
+        <TextView
+            style="@style/Label"
+            android:text="@string/attributes_label" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1">
+
+            <TableLayout
+                android:id="@+id/attrs_table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shrinkColumns="1" />
+        </ScrollView>
+
+        <include layout="@layout/element_attrs_settings" />
+    </LinearLayout>
+</RelativeLayout>
