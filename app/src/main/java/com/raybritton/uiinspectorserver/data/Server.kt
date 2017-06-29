@@ -32,7 +32,7 @@ class Server(val ctx: android.content.Context, var port: Int) {
         multicastWait = false
         this.device = device
         uiSubject.onNext("status|Connecting with ${this.device}")
-        val dataPort = java.util.Random().nextInt(1000) + 12345
+        val dataPort = java.util.Random().nextInt(2000) + 14567
         val message = ("2@SERVER_IP|" + hostAddress + "|$dataPort|${device.code}|").toByteArray()
 
         startDirectSocket(dataPort)
