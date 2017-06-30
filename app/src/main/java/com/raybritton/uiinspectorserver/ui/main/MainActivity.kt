@@ -143,6 +143,11 @@ class MainActivity : AppCompatActivity(), MainMvp.View {
                 presenter.onImageTap(x, y)
             }
         }
+
+        if (intent.data != null) {
+            val file = contentResolver.openFileDescriptor(intent.data, "r")
+            presenter.load(file.fileDescriptor)
+        }
     }
 
     override fun onBackPressed() {
