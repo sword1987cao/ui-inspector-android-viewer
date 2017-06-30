@@ -1,6 +1,7 @@
 package com.raybritton.uiinspectorserver.data
 
 import com.raybritton.uiinspectorserver.data.model.Device
+import timber.log.Timber
 
 class Server(val ctx: android.content.Context, var port: Int) {
     private val group = java.net.InetAddress.getByName("229.11.22.34")
@@ -39,7 +40,7 @@ class Server(val ctx: android.content.Context, var port: Int) {
 
         try {
             multicastSocket?.send(java.net.DatagramPacket(message, message.size, group, port))
-            timber.log.Timber.d("Connected")
+            Timber.d("Connected")
         } catch (e: java.net.SocketException) {
             uiSubject.onNext("ERROR (MC): " + e.message)
         }
@@ -48,7 +49,7 @@ class Server(val ctx: android.content.Context, var port: Int) {
     }
 
     private fun stop() {
-        timber.log.Timber.d("Stopping")
+        Timber.d("Stopping")
         multicastWait = false
         multicastSocket?.close()
         running = false
