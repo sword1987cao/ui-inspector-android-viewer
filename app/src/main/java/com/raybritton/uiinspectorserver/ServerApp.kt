@@ -6,10 +6,10 @@ import android.os.Build
 import com.raybritton.inspector.Inspector
 import com.raybritton.inspector.RemoteInspector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasDispatchingActivityInjector
+import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
-class ServerApp : Application(), HasDispatchingActivityInjector {
+class ServerApp : Application(), HasActivityInjector {
     private lateinit var inspector: Inspector
 
     val component: AppComponent = createComponent()
