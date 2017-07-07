@@ -15,6 +15,9 @@ It works by sending a JSON file containing data about parameters, etc to the vie
 * Viewer app for Desktop
   * [Readme and source code](https://github.com/raybritton/ui-inspector-jvm-viewer)
   * Download: 
+* Viewer app for Desktop (CLI)
+  * [Readme and source code](https://github.com/raybritton/ui-inspector-jvm-cli-viewer)
+  * Download: https://github.com/raybritton/ui-inspector-jvm-cli-viewer/releases
 
 #### Communication
 
