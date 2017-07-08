@@ -3,11 +3,12 @@ package com.raybritton.uiinspectorserver.ui.main
 import android.net.Uri
 import android.os.Environment
 import com.f2prateek.rx.preferences2.Preference
+import com.raybritton.server_comm.Device
+import com.raybritton.server_comm.Server
+import com.raybritton.uiinspectorserver.data.IpProvider
 import com.raybritton.uiinspectorserver.data.Parser
-import com.raybritton.uiinspectorserver.data.Server
 import com.raybritton.uiinspectorserver.data.model.AndroidActivity
 import com.raybritton.uiinspectorserver.data.model.AndroidView
-import com.raybritton.uiinspectorserver.data.model.Device
 import com.raybritton.uiinspectorserver.data.model.TreeNode
 import com.raybritton.uiinspectorserver.data.prefs.DimenUnit
 import com.raybritton.uiinspectorserver.data.prefs.ShowEmptyAttrs
@@ -40,10 +41,11 @@ class MainPresenter @javax.inject.Inject constructor(
     private var lastTreeNodeId = 0
 
     override fun onCreate() {
+        val ipProvider = IpProvider(ctx)
         statusSubscription?.dispose()
         deviceSubscription?.dispose()
         view.setStatus("Waiting for device")
-        server = Server(ctx, 13588)
+        server = Server(ipProvider::getIpAddress, 13588)
 
         adapter.listener = this
 

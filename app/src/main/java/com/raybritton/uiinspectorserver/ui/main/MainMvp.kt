@@ -1,7 +1,7 @@
 package com.raybritton.uiinspectorserver.ui.main
 
 import android.net.Uri
-import com.raybritton.uiinspectorserver.data.model.Device
+import com.raybritton.server_comm.Device
 import com.raybritton.uiinspectorserver.data.model.TreeNode
 import java.io.FileDescriptor
 

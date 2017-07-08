@@ -25,8 +25,8 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.f2prateek.rx.preferences2.Preference
+import com.raybritton.server_comm.Device
 import com.raybritton.uiinspectorserver.R
-import com.raybritton.uiinspectorserver.data.model.Device
 import com.raybritton.uiinspectorserver.data.model.TreeNode
 import com.raybritton.uiinspectorserver.data.prefs.*
 import com.raybritton.uiinspectorserver.ui.main.MainMvp.Unit.DP

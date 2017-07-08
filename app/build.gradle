@@ -70,6 +70,7 @@ dependencies {
 
     compile 'com.jakewharton.timber:timber:4.5.1'
     compile 'com.raybritton.inspector:inspector:1.2.1'
+    compile 'com.raybritton.server_comm:server_comm:1.0.3'
 
     compile "com.google.dagger:dagger:$daggerVer"
     compile "com.google.dagger:dagger-android:$daggerVer"
