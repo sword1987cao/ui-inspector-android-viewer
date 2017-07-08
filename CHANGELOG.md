@@ -1,3 +1,7 @@
+# 1.4.1
+
+- Use server lib instead of local copies
+
 # 1.4.0
 
 - Associate app with .uijson files
