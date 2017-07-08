@@ -20,7 +20,7 @@ android {
         applicationId "com.raybritton.uiinspectorserver"
         minSdkVersion 23
         targetSdkVersion 25
-        versionCode 6
+        versionCode 7
         versionName "1.4.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
