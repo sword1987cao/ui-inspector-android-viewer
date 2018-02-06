@@ -1,3 +1,6 @@
+# DEPRECATED
+## With Android Studios Layout Inspector improvements this project is no longer useful.
+
 # UI Inspector system (WIP)
 
 #### Overview
