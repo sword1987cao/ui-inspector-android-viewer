@@ -1,15 +1,11 @@
-plugins {
-    id "me.tatarka.retrolambda" version "3.6.0"
-}
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "26.0.0"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -19,9 +15,9 @@ android {
     defaultConfig {
         applicationId "com.raybritton.uiinspectorserver"
         minSdkVersion 23
-        targetSdkVersion 25
-        versionCode 7
-        versionName "1.4.1"
+        targetSdkVersion 27
+        versionCode 8
+        versionName "1.5.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
@@ -53,23 +49,25 @@ android {
     }
 }
 
-ext.supportLibraryVer = '25.4.0'
-ext.daggerVer = '2.11'
+android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
+
+ext.supportLibraryVer = '27.0.2'
+ext.daggerVer = '2.12'
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     compile 'com.github.salomonbrys.kotson:kotson:2.3.0'
 
     compile "com.android.support:appcompat-v7:$supportLibraryVer"
     compile "com.android.support:recyclerview-v7:$supportLibraryVer"
     compile "com.android.support:design:$supportLibraryVer"
 
-    compile "io.reactivex.rxjava2:rxjava:2.0.8"
+    compile "io.reactivex.rxjava2:rxjava:2.1.8"
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0-RC2'
+    compile 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0-RC3'
 
-    compile 'com.jakewharton.timber:timber:4.5.1'
-    compile 'com.raybritton.inspector:inspector:1.2.1'
+    compile 'com.jakewharton.timber:timber:4.6.0'
+    compile 'com.raybritton.inspector:inspector_lib:1.0.1'
     compile 'com.raybritton.server_comm:server_comm:1.0.3'
 
     compile "com.google.dagger:dagger:$daggerVer"
