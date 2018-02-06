@@ -7,7 +7,7 @@ import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
 import com.raybritton.uiinspectorserver.data.model.AndroidActivity
 import com.raybritton.uiinspectorserver.data.model.AndroidView
-import java.util.*
+import java.util.Locale
 
 class AndroidActivityJsonParser(val viewParser: AndroidViewParser) : TypeAdapter<AndroidActivity>() {
 
@@ -36,7 +36,7 @@ class AndroidActivityJsonParser(val viewParser: AndroidViewParser) : TypeAdapter
         reader.endObject()
 
         bitmapData = bitmapData!!.replace("\\","")
-        val bytes = Base64.decode(bitmapData, Base64.NO_WRAP)
+        val bytes = Base64.decode(bitmapData.substring(4), Base64.NO_WRAP)
         val image = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
         return AndroidActivity(activityName!!, deviceName!!, image, root!!, density)
     }
