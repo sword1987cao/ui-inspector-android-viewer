@@ -2,7 +2,7 @@
 
 #### Overview
 
-This library is for developers, designers and testers to inspect the UI of an Android app. It requires a library be added to the add and a viewer app running on an Android tablet or on a computer.
+This library is for developers, designers and testers to inspect the UI of an Android app. It requires a library be added to the app and a viewer app running on an Android tablet or on a computer.
 
 It works by sending a JSON file containing data about parameters, etc to the viewer app which reconstructs the UI.
 
