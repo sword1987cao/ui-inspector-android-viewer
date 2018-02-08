@@ -13,11 +13,14 @@ data class TreeNode(val id: Int, val name: String, val view: AndroidView, val in
     }
 
     private fun isZero(value: String): Boolean {
-        if (value.isNullOrBlank()) {
+        if (value.isBlank()) {
             return true
         }
         when (value.substringAfter('|')) {
             "0.0", "0", "-" -> return true
+        }
+        if (value == "null") {
+            return true
         }
         return false
     }
