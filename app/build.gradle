@@ -16,8 +16,8 @@ android {
         applicationId "com.raybritton.uiinspectorserver"
         minSdkVersion 23
         targetSdkVersion 27
-        versionCode 9
-        versionName "1.5.1"
+        versionCode 10
+        versionName "1.5.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
