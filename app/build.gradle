@@ -16,8 +16,8 @@ android {
         applicationId "com.raybritton.uiinspectorserver"
         minSdkVersion 23
         targetSdkVersion 27
-        versionCode 8
-        versionName "1.5.0"
+        versionCode 9
+        versionName "1.5.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
@@ -67,7 +67,6 @@ dependencies {
     compile 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0-RC3'
 
     compile 'com.jakewharton.timber:timber:4.6.0'
-    compile 'com.raybritton.inspector:inspector_lib:1.0.1'
     compile 'com.raybritton.server_comm:server_comm:1.0.3'
 
     compile "com.google.dagger:dagger:$daggerVer"

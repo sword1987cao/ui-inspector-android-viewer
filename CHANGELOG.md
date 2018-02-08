@@ -1,3 +1,7 @@
+# 1.5.1
+
+- Remove inspector library
+
 # 1.5.0
 
 - Update libraries (support to 27.0.3, target/compile to 27, rxjava to 2.1.8, kotlin to 1.2.21)

@@ -20,7 +20,10 @@ fun MainActivity.makeRow(key: String, value: String, convert: (String) -> String
         val image = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
         return makeRow(key, image)
     } else if (value.startsWith("clr")) {
-        val colour = value.substringAfter('|')
+        var colour = value.substringAfter('|')
+        if (colour[0] != '#') {
+            colour = "#" + colour
+        }
         return makeRow(key, Color.parseColor(colour), colour)
     } else {
         return makeRow("Unknown: $key", value)

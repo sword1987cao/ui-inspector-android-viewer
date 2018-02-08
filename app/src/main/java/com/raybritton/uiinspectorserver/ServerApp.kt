@@ -2,15 +2,11 @@ package com.raybritton.uiinspectorserver
 
 import android.app.Activity
 import android.app.Application
-import android.os.Build
-import com.raybritton.inspector.Inspector
-import com.raybritton.inspector.RemoteInspector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
 class ServerApp : Application(), HasActivityInjector {
-    private lateinit var inspector: Inspector
 
     val component: AppComponent = createComponent()
 
@@ -21,15 +17,6 @@ class ServerApp : Application(), HasActivityInjector {
         super.onCreate()
 
         component.inject(this)
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            val remoteInspector = RemoteInspector()
-            remoteInspector.autoInspectStart(this)
-            inspector = remoteInspector.inspector
-        } else {
-            inspector = Inspector()
-        }
-        inspector.setSafeMode(true)
     }
 
     override fun activityInjector(): DispatchingAndroidInjector<Activity> {
