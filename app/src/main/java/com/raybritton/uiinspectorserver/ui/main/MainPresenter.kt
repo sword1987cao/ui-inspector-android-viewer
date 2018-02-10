@@ -17,6 +17,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import java.io.File
 import java.io.FileDescriptor
 import java.io.FileInputStream
@@ -34,6 +35,7 @@ class MainPresenter @javax.inject.Inject constructor(
     private lateinit var server: Server
     private var statusSubscription: Disposable? = null
     private var deviceSubscription: Disposable? = null
+    private var jsonSubscription: Disposable? = null
     private var selectedNode: TreeNode? = null
     private lateinit var activity: AndroidActivity
     private var json: String? = null
@@ -44,21 +46,33 @@ class MainPresenter @javax.inject.Inject constructor(
         val ipProvider = IpProvider(ctx)
         statusSubscription?.dispose()
         deviceSubscription?.dispose()
+        jsonSubscription?.dispose()
         view.setStatus("Waiting for device")
         server = Server(ipProvider::getIpAddress, 13588)
 
         adapter.listener = this
 
-        statusSubscription = server.observeStatus()
+        statusSubscription = server.status()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ t -> handleMessage(t) },
-                        { t ->
-                            view.setStatus(t.message!!)
-                            timber.log.Timber.d(t, "status")
-                        })
+                .subscribe({ msg ->
+                    view.setStatus(msg)
+                }, { t ->
+                    view.setStatus(t.message!!)
+                    Timber.d(t, "status")
+                })
 
-        deviceSubscription = server.observeDevices()
+        jsonSubscription = server.json()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ message ->
+                    handleJson(message)
+                }, { ex ->
+                    Timber.e(ex, "unable to parse json")
+                    view.setStatus("Bad data: ${ex.message}")
+                })
+
+        deviceSubscription = server.devices()
                 .distinctUntilChanged()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -73,6 +87,12 @@ class MainPresenter @javax.inject.Inject constructor(
                         onNodeSelected(selectedNode!!)
                     }
                 }
+    }
+
+    override fun onDestroy() {
+        statusSubscription?.dispose()
+        deviceSubscription?.dispose()
+        jsonSubscription?.dispose()
     }
 
     override fun connect(device: Device) {
@@ -110,18 +130,10 @@ class MainPresenter @javax.inject.Inject constructor(
     override fun load(file: FileDescriptor) {
         val json = FileInputStream(file).bufferedReader().readLine()
         if (json.startsWith("${VERSION}_json")) {
-            handleMessage(json.substringAfter("_"))
-            handleMessage("Displaying data from file")
+            handleJson(json.substringAfter("_"))
+            view.setStatus("Displaying data from file")
         } else {
             view.showLoadError()
-        }
-    }
-
-    private fun handleMessage(message: String) {
-        when {
-            message.startsWith("json") -> handleJson(message)
-            message.startsWith("status") -> view.setStatus(message.substringAfter('|'))
-            else -> view.setStatus(message)
         }
     }
 

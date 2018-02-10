@@ -1,3 +1,7 @@
+# 1.6.0
+
+- App is now fullscreen
+
 # 1.5.2
 
 - Remove inspector library

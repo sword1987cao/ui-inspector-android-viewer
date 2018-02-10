@@ -36,5 +36,6 @@ interface MainMvp {
         fun share(name: String)
         fun checksUpdated()
         fun onImageTap(x: Int, y: Int)
+        fun onDestroy()
     }
 }

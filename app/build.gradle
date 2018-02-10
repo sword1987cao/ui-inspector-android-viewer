@@ -67,7 +67,7 @@ dependencies {
     compile 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0-RC3'
 
     compile 'com.jakewharton.timber:timber:4.6.0'
-    compile 'com.raybritton.server_comm:server_comm:1.0.3'
+    compile 'com.raybritton.server_comm:server_comm:1.1.0'
 
     compile "com.google.dagger:dagger:$daggerVer"
     compile "com.google.dagger:dagger-android:$daggerVer"

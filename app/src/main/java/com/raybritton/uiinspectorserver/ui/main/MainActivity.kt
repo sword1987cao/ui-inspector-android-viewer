@@ -152,6 +152,11 @@ class MainActivity : AppCompatActivity(), MainMvp.View {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
+
     override fun onBackPressed() {
         if (ui_settings_panel.visibility == View.VISIBLE) {
             toggleSettingsVisibility()
