@@ -73,8 +73,6 @@ class MainPresenter @javax.inject.Inject constructor(
                         onNodeSelected(selectedNode!!)
                     }
                 }
-
-
     }
 
     override fun connect(device: Device) {
